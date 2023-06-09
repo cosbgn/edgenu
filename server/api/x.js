@@ -1,11 +1,16 @@
 
+// import { Pool } from '@neondatabase/serverless';
+// import { drizzle } from 'drizzle-orm/neon-serverless'
 
-import {users} from "../db/schema.js"
+// import {users} from "../db/schema.js"
 
-import { sql } from '@vercel/postgres'
-import { drizzle } from 'drizzle-orm/vercel-postgres'
-const db = drizzle(sql)
+// // const pool = new Pool({
+// // 	connectionString: process.env.POSTGRES_URL,
+// // 	ssl: { rejectUnauthorized: false}
+// // })
+// const pool = new Pool({ connectionString: process.env.POSTGRES_URL });
+// const db = drizzle(pool)
 
 export default defineEventHandler(async (event) => {
-	return await db.select().from(users)
+	return 'ok' // await db.select().from(users)
 })
