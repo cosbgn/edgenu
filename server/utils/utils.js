@@ -4,6 +4,7 @@ import * as schema from "../db/schema.js"
 
 const client = createPool({maxUses:1, connectionString: process.env.POSTGRES_URL})
 export const db = drizzle(client, {schema})
+
 // let _db = null
 // export const useDb = () => {
 // 	if (!_db){
