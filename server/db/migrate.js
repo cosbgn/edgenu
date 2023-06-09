@@ -1,6 +1,6 @@
 // Simple script which applies migrations to the database
 import 'dotenv/config'
-import { migrate } from 'drizzle-orm/neon-serverless/migrator'
+import { migrate } from 'drizzle-orm/vercel-postgres/migrator'
 import { useDb } from '../utils/utils.js'
 
 const db = await useDb(true)

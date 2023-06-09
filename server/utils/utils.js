@@ -1,19 +1,14 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import ws from 'ws'
-import { drizzle } from 'drizzle-orm/neon-serverless'
-
+import { createPool } from "@vercel/postgres"; 
+import { drizzle } from 'drizzle-orm/vercel-postgres';
 import * as schema from "../db/schema.js"
-let _db = null
-export const useDb = (force_ws=false) => {
-	console.log(`Env is: ${process.env.NODE_ENV}`)
-	// https://github.com/neondatabase/serverless#run-on-node
-	if (process.env.NODE_ENV === "development" || force_ws){ // force_ws in build setup
-		neonConfig.webSocketConstructor = ws
-	}
-	if (!_db){
-		// Max 1 is needed on edge functions neonConfig.webSocketConstructor = ws; 
-		const pool = new Pool({ connectionString: process.env.POSTGRES_URL })
-		_db = drizzle(pool, { schema })
-	}
-	return _db
-}
+
+const client = createPool({maxUses:1, connectionString: process.env.POSTGRES_URL})
+export const db = drizzle(client, {schema})
+// let _db = null
+// export const useDb = () => {
+// 	if (!_db){
+// 		const client = createClient({maxUses:1, connectionString: process.env.POSTGRES_URL_NON_POOLING})
+// 		_db = drizzle(client, {schema})
+// 	}
+// 	return _db
+// }
