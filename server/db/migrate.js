@@ -3,7 +3,8 @@ import 'dotenv/config'
 import { migrate } from 'drizzle-orm/neon-serverless/migrator'
 import { useDb } from '../utils/utils.js'
 
-const db = await useDb()
+const db = await useDb(true)
+
 const config = { migrationsFolder: "./server/db/migrations" }
 try{
 	await migrate(db, config)

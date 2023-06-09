@@ -4,10 +4,10 @@ import { drizzle } from 'drizzle-orm/neon-serverless'
 
 import * as schema from "../db/schema.js"
 let _db = null
-export const useDb = () => {
+export const useDb = (force_ws=false) => {
 	console.log(`Env is: ${process.env.NODE_ENV}`)
 	// https://github.com/neondatabase/serverless#run-on-node
-	if (process.env.NODE_ENV === "development" || process.env.NODE_ENV == undefined){
+	if (process.env.NODE_ENV === "development" || force_ws){ // force_ws in build setup
 		neonConfig.webSocketConstructor = ws
 	}
 	if (!_db){
