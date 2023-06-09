@@ -1,15 +1,13 @@
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import { createPool } from '@vercel/postgres'
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+
 import * as schema from "../db/schema.js"
 let _db = null
-
 export const useDb = () => {
 	if (!_db){
-		const pool = createPool({ // https://github.com/vercel/storage/tree/main/packages/postgres
-			maxUses:1, // For Edge Functions
-			connectionString: process.dev ? 'http://localhost:5432' : process.env.POSTGRES_URL_NON_POOLING,
-		})
-		_db = drizzle(pool.sql, { schema })
+		// Max 1 is needed on edge functions
+		const client = postgres(process.env.POSTGRES_URL, { max: 1, ssl:'require' });
+		_db = drizzle(client, { schema })
 	}
 	return _db
 }
