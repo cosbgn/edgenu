@@ -7,7 +7,7 @@ let _db = null
 export const useDb = () => {
 	console.log(`Env is: ${process.env.NODE_ENV}`)
 	// https://github.com/neondatabase/serverless#run-on-node
-	if (process.env.NODE_ENV === "development"){
+	if (process.env.NODE_ENV === "development" || process.env.NODE_ENV == undefined){
 		neonConfig.webSocketConstructor = ws
 	}
 	if (!_db){
