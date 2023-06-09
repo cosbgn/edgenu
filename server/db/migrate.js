@@ -1,7 +1,7 @@
 // Simple script which applies migrations to the database
 import 'dotenv/config'
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import { useDb } from '../utils/utils.js';
+import { migrate } from 'drizzle-orm/postgres-js/migrator'
+import { useDb } from '../utils/utils.js'
 
 const db = await useDb()
 const config = { migrationsFolder: "./server/db/migrations" }

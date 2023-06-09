@@ -9,7 +9,7 @@
     "db:migrate": "node ./server/db/migrate.js",
     "prebuild": "npm run db:generate && npm run db:migrate",
     "build": "nuxt build",
-	"predev":"npm run prebuild",
+    "predev": "npm run prebuild",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
