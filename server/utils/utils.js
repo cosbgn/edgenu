@@ -5,7 +5,7 @@ import * as schema from "../db/schema.js"
 // const client = createPool({maxUses:1, connectionString: process.env.POSTGRES_URL})
 
 let _db = null
-export const useDb = async () => {
+const useDb = async () => {
 	if (!_db){
 		const client = createClient({maxUses:1, connectionString: process.env.POSTGRES_URL_NON_POOLING})
 		await client.connect()
@@ -13,3 +13,5 @@ export const useDb = async () => {
 	}
 	return _db
 }
+
+module.exports = useDb
