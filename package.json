@@ -16,6 +16,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@neondatabase/serverless": "^0.4.10",
     "drizzle-kit": "^0.18.1",
     "drizzle-orm": "^0.26.5",
     "nuxt": "^3.5.2",
