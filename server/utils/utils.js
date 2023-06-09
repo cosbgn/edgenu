@@ -9,7 +9,7 @@ export const useDb = async () => {
 	if (!_db){
 		const client = createClient({maxUses:1, connectionString: process.env.POSTGRES_URL_NON_POOLING})
 		await client.connect()
-		_db = drizzle(client, {schema})
+		_db = drizzle(client, {schema}) 
 	}
 	return _db
 }
