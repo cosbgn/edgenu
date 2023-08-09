@@ -1,4 +1,6 @@
 import CredentialsProvider from "@auth/core/providers/credentials"
+// import GoogleProvider from "@auth/core/providers/google"
+
 import { NuxtAuthHandler } from "#auth"
 const secret = "Ni2ozVOKix6jnI1yRS0whDR+COzyTurZZFr7s/YZrjY="
 
@@ -9,6 +11,13 @@ export const authOptions = {
 	},
 	secret: secret,
 	providers: [
+		
+		// GoogleProvider({
+		// 	clientId: process.env.UNFETCH_GOOGLE_CLIENT_ID,
+		// 	clientSecret: process.env.UNFETCH_GOOGLE_CLIENT_SECRET,
+		// 	profile: (profile) => ({given_name: profile.given_name, family_name:profile.family_name, picture:profile.picture, email: profile.email, email_verified:profile.email_verified, id:profile.sub}),
+		// }),
+
 		CredentialsProvider({
 			credentials: {
 				username: { label: "Username", type: "text", placeholder: "admin" },
@@ -19,6 +28,22 @@ export const authOptions = {
 			}
 		})
 	],
+	callbacks: {
+		async signIn({ profile }) {
+			return true
+		},
+
+		async jwt({token, user}){
+			if (user?.email) {
+				token.user = {id:'6172882', email:'email@me.com'}
+			}
+			return token
+		},
+		
+		async session({ token, session }) {
+			return token.user ?? {}
+		}
+	}
 }
 
 const config = {
