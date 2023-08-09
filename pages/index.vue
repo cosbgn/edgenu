@@ -7,7 +7,8 @@
 			<nuxt-link to="/private">Private</nuxt-link>
 		</div>
 		<div>
-			<button @click="login">signIn</button>
+			<button @click="login">signIn creds</button>
+			<button @click="signIn('google')">signIn ggle</button>
 			<button @click="signOut()">signOut</button>
 		</div>
 
