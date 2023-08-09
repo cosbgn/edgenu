@@ -1,16 +1,24 @@
-import GoogleProvider from "@auth/core/providers/google"
+import CredentialsProvider from "@auth/core/providers/credentials"
 import { NuxtAuthHandler } from "#auth"
 
 
 export const authOptions = {
+	pages: {
+		signIn: '/login',
+		signOut: '/',
+	},
 	secret: process.env.AUTH_SECRET,
 	providers: [
-		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-			profile: (profile) => ({given_name: profile.given_name, family_name:profile.family_name, picture:profile.picture, email: profile.email, email_verified:profile.email_verified, id:profile.sub}),
+		CredentialsProvider({
+			credentials: {
+				username: { label: "Username", type: "text", placeholder: "admin" },
+				password: { label: "Password", type: "password" }
+			},
+			async authorize(credentials) {
+				return { id: "1", email: "admin@me.com"}
+			}
 		})
-	  ]
+	],
 }
 
 const config = {

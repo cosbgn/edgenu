@@ -2,15 +2,18 @@
 	<div style="padding:10px">
 
 		<div>
-			Hello, status is: {{ status }}
+			<p>Session is: {{ session }}</p>
+			<p>status is: {{ status }}</p>
+			<nuxt-link to="/private">Private</nuxt-link>
 		</div>
 		<div>
-			<button @click="signIn">signIn</button>
-			<button @click="signOut">signOut</button>
+			<button @click="login">signIn</button>
+			<button @click="signOut()">signOut</button>
 		</div>
 
 	</div>
 </template>
 <script setup>
-const {status, signIn, signOut } = useAuth()
+const { signIn, signOut, session, status, cookies, getProviders } = useAuth()
+const login = async () => await signIn('credentials', { username: 'admin', password: 'admin'})
 </script>
