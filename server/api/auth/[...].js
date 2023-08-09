@@ -1,13 +1,13 @@
 import CredentialsProvider from "@auth/core/providers/credentials"
 import { NuxtAuthHandler } from "#auth"
-
+const secret = "Ni2ozVOKix6jnI1yRS0whDR+COzyTurZZFr7s/YZrjY="
 
 export const authOptions = {
 	pages: {
 		signIn: '/login',
 		signOut: '/',
 	},
-	secret: process.env.AUTH_SECRET,
+	secret: secret,
 	providers: [
 		CredentialsProvider({
 			credentials: {
@@ -23,12 +23,12 @@ export const authOptions = {
 
 const config = {
 	authJs: {
-		secret: process.env.AUTH_SECRET // You can generate one with `openssl rand -base64 32`
+		secret: secret // You can generate one with `openssl rand -base64 32`
 	},
 	public: {
 		authJs: {
 			guestRedirectTo: "/",
-			baseUrl: process.env.NEXTAUTH_URL, // The base URL is used for the Origin Check in prod only
+			baseUrl: 'https://edgenu.vercel.app', // The base URL is used for the Origin Check in prod only
 			verifyClientOnEveryRequest: true // whether to hit the /auth/session endpoint on every client request
 		}
 	} 
