@@ -1,15 +1,12 @@
-import { createPool, createClient } from "@vercel/postgres"; 
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import * as schema from "../db/schema.js"
+import { authOptions } from "../api/auth/[...].js"
+import { getServerSession } from '#auth'
 
-// const client = createPool({maxUses:1, connectionString: process.env.POSTGRES_URL})
-
-let _db = null
-export async function useDb () {
-	if (!_db){
-		const client = createClient({maxUses:1, connectionString: process.env.POSTGRES_URL_NON_POOLING})
-		await client.connect()
-		_db = drizzle(client, {schema})
+export async function get_user(event){
+	const user = await getServerSession(event, authOptions)
+	if (!user || !user?.id){
+		throw createError({ statusCode:401, statusMessage:"You need to be logged in to do this" })
 	}
-	return _db
+	// Disable Caching for logged in users
+	appendResponseHeader(event, 'Cache-Control', 'no-cache')
+	return user
 }

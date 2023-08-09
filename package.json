@@ -3,11 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "db:generate": "npx drizzle-kit generate:pg --config=./server/db/drizzle.config.json",
-    "db:introspect": "npx drizzle-kit introspect:pg --config=./server/db/drizzle.config.json",
-    "db:push": "npx drizzle-kit push:pg --config=./server/db/drizzle.config.json",
-    "db:migrate": "node ./server/db/migrate.js",
-    "prebuild": "npm run db:generate && npm run db:migrate",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -15,9 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@vercel/postgres": "^0.3.0",
-    "drizzle-kit": "^0.18.1",
-    "drizzle-orm": "^0.26.5",
-    "nuxt": "^3.5.2"
+    "@auth/core": "^0.9.0",
+    "@hebilicious/authjs-nuxt": "^0.2.0-beta.5",
+    "nuxt": "^3.6"
   }
 }
