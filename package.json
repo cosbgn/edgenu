@@ -14,5 +14,8 @@
     "@hebilicious/authjs-nuxt": "^0.2.0-beta.5",
     "nitropack-edge": "^2.6.0-28193343.8c0473c",
     "nuxt": "^3.6"
+  },
+  "overrides": {
+    "nitropack": "npm:nitropack-edge@latest"
   }
 }
