@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 	authJs:{
 		guestRedirectTo: "/login",
 		authenticatedRedirectTo: "/app/chat",
-		// baseUrl: process.env.NEXTAUTH_URL,
+		baseUrl: "https://edgenu.vercel.app",
 		verifyClientOnEveryRequest: true
 	},
 	nitro: {
