@@ -51,11 +51,11 @@ const config = {
 		secret: secret // You can generate one with `openssl rand -base64 32`
 	},
 	public: {
-		authJs: {
-			guestRedirectTo: "/",
-			baseUrl: 'https://edgenu.vercel.app', // The base URL is used for the Origin Check in prod only
-			verifyClientOnEveryRequest: true // whether to hit the /auth/session endpoint on every client request
-		}
+		// authJs: {
+		// 	guestRedirectTo: "/",
+		// 	baseUrl: 'https://edgenu.vercel.app', // The base URL is used for the Origin Check in prod only
+		// 	verifyClientOnEveryRequest: true // whether to hit the /auth/session endpoint on every client request
+		// }
 	} 
 }
 

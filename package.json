@@ -7,23 +7,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "edge:dev": "npx wrangler pages dev --port 3000 --log-level=debug --compatibility-date=2023-08-07 -- nuxt dev"
   },
   "devDependencies": {
-    "@auth/core": "^0.9.0",
-    "@hebilicious/authjs-nuxt": "^0.2.0-beta.5",
+    "@auth/core": "^0.10.4",
+    "@hebilicious/authjs-nuxt": "^0.3.0-beta.2",
     "nitropack": "npm:nitropack-edge@latest",
     "nuxt": "^3.6"
   },
   "overrides": {
     "nitropack": "npm:nitropack-edge@latest"
-  },
-    "resolutions": {
-    "nitropack": "npm:nitropack-edge@latest"
-  },
-    "pnpm": {
-    "overrides": {
-      "nitropack": "npm:nitropack-edge@latest"
-    }
   }
 }

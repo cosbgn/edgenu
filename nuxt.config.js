@@ -1,5 +1,12 @@
 import { resolve } from "node:path"
 export default defineNuxtConfig({
+
+	authJs:{
+		guestRedirectTo: "/login",
+		authenticatedRedirectTo: "/app/chat",
+		// baseUrl: process.env.NEXTAUTH_URL,
+		verifyClientOnEveryRequest: true
+	},
 	nitro: {
 		preset: 'vercel-edge'
 	},
