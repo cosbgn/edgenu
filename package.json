@@ -11,8 +11,8 @@
     "edge:dev": "npx wrangler pages dev --port 3000 --log-level=debug --compatibility-date=2023-08-07 -- nuxt dev"
   },
   "devDependencies": {
-    "@auth/core": "^0.10.4",
-    "@hebilicious/authjs-nuxt": "^0.2.0-beta.8",
+    "@auth/core": "^0.9.0",
+    "@hebilicious/authjs-nuxt": "^0.2.0-beta.5",
     "h3": "1.8.0-rc.3",
     "nitropack": "npm:nitropack-edge@latest",
     "nuxt": "^3.6"
