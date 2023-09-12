@@ -13,5 +13,5 @@ export default defineNuxtConfig({
 	// alias: {
 	// 	cookie: resolve(__dirname, "node_modules/cookie")
 	// },
-	modules:['@hebilicious/authjs-nuxt']
+	// modules:['@hebilicious/authjs-nuxt']
 })
