@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "edgenu",
   "private": true,
   "type": "module",
   "scripts": {
@@ -7,14 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "edge:dev": "npx wrangler pages dev --port 3000 --log-level=debug --compatibility-date=2023-08-07 -- nuxt dev"
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@auth/core": "^0.14.0",
-    "@hebilicious/authjs-nuxt": "^0.3.0",
-    "@vercel/edge": "^1.1.1",
-    "h3": "1.8.0-rc.3",
-    "nuxt": "^3.7.1"
+    "nuxt": "^3.8.2",
+    "nuxt-auth-utils": "^0.0.10"
   }
 }
